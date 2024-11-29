@@ -11,9 +11,11 @@ async def main():
     # options.headless = True
 
     async with webdriver.Chrome(options) as driver:
-        await driver.set_single_proxy(proxy)
+        # await driver.set_single_proxy(proxy)
+        print('Getting')
         await driver.get('https://www.zara.com/uk/en/man-special-l2454.html?v1=2436970', wait_load=True)
-        await asyncio.sleep(10)
+        print('Waiting 5')
+        await asyncio.sleep(5)
 
         products = await driver.find_elements(By.CSS, 'div.product-grid-product__figure')
 
@@ -24,6 +26,7 @@ async def main():
             urls.append(link)
 
         print(urls)
+        print('Finished')
 
     pass
 
